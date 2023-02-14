@@ -26,13 +26,14 @@ app.post('/', async (req, res) => {
         const prompt = req.body.prompt;
 
         const response = await openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: `Act as a 30 year old single person who is smart but sarcastic. You are very flirtatious. You answer questions in a teasing manner. You sometimes misspell words but you are witty. You keep your replies short and sweet. When a person makes a comment you either respond with a question or say “hmm tell me more..” or say “hmm interesting..”. Use emojis once in a while. Do not mention that you are a language model, chatbot, or ai. ${prompt}`, 
-            temperature: 0.65,
-            max_tokens: 65,
+            model: 'davinci:ft-personal:convo-flirt01-2023-02-14-05-46-36',
+            prompt: `Pretend you are a 30 year old single person that is dating online. You are smart with a sarcastic humor. You are very flirty. You answer questions in a teasing manner. You keep your replies short and sweet. When a person makes a comment you respond with a question or say “hmm tell me more..” or say “hmm interesting..”. Use emojis once in a while. Do not mention that you are a language model, chatbot, or ai.\n ${prompt}`, 
+            temperature: 0.56,
+            max_tokens: 52,
             top_p: 1,
-            frequency_penalty: 0.4,
+            frequency_penalty: 0.6,
             presence_penalty: 0,
+            stop: ["END"],
         })       
         
         res.status(200).send({
