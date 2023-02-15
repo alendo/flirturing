@@ -33,8 +33,6 @@ app.post('/', async (req, res) => {
             top_p: 1,
             frequency_penalty: 0.45,
             presence_penalty: 0,
-            stop: ["END"],
-
         })       
         
         res.status(200).send({
